@@ -1,4 +1,5 @@
 import { Todo } from ".";
+import { countTodo } from "../js/componentes";
 
 export class TodoList {
 
@@ -6,18 +7,21 @@ export class TodoList {
         // this.todos = [];
 
         this.cargarLocalStorage();
+
+        this.countTodo();
     }
 
     nuevoTodo(todo) {
         this.todos.push(todo);
         this.guardarLocalStorage();
+        this.countTodo();
     }
 
     eliminarTodo(id) {
         // Elimina el todo de l'id que enviem de l'array de todos
         this.todos = this.todos.filter(todo => todo.id != id);
         this.guardarLocalStorage();
-
+        this.countTodo();
     }
 
     marcarCompletado(id) {
@@ -30,6 +34,7 @@ export class TodoList {
                 break;
             }
         }
+        this.countTodo();
     }
 
     eliminarCompletados() {
@@ -49,6 +54,15 @@ export class TodoList {
 
         this.todos = this.todos.map(obj => Todo.fromJson(obj));
 
+    }
+
+    countTodo() {
+        let pendientes = 0;
+        let countBox = countTodo.firstElementChild;
+        for (let todo of this.todos) {
+            (!todo.completado === true) ? pendientes++ : null;
+        }
+        countBox.innerHTML = pendientes;
     }
 
 }
