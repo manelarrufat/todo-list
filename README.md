@@ -1,6 +1,6 @@
-# Webpack Starter
+# Todo List
 
-Aquest és el projecte inicial per crear aplicacions utilitzant webpack.
+Aquest projecte és una aplicació de llista de tasques utilitzant webpack.
 
 ### Notes:
 Recordeu a reconstruir els mòduls de Node: 
